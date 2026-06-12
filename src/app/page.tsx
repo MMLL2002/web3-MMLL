@@ -116,7 +116,7 @@ export default function Home() {
               <Sparkles className="h-4 w-4 text-cyan-300" />
               盯行情、抓新闻、发提醒，你的 web3 爪子已上线
             </div>
-            <h1 className="text-balance max-w-4xl text-[2rem] font-semibold leading-tight tracking-normal sm:text-5xl lg:text-6xl">
+            <h1 className="text-balance max-w-4xl text-3xl font-semibold leading-tight tracking-normal sm:text-5xl lg:text-6xl">
               你的个人
               <span className="block bg-gradient-to-r from-cyan-200 via-white to-violet-300 bg-clip-text text-transparent">
                 Web3 爪子
