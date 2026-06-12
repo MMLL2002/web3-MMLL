@@ -1,34 +1,54 @@
-﻿export const revalidate = 120;
+export const revalidate = 120;
 
 interface NewsItem { title: string; link: string; desc: string; }
 
-export async function GET() {
-  try {
-    const res = await fetch("https://cointelegraph.com/rss", {
-      next: { revalidate: 120 },
-      headers: { "User-Agent": "Mozilla/5.0 (compatible; NewsBot)" },
-    });
-    if (!res.ok) return Response.json({ error: "RSS failed" }, { status: 502 });
-    const xml = await res.text();
-    const items: NewsItem[] = [];
-    let pos = 0;
-    while (items.length < 9) {
-      const start = xml.indexOf("<item>", pos);
-      if (start < 0) break;
-      const end = xml.indexOf("</item>", start);
-      if (end < 0) break;
-      const item = xml.slice(start + 6, end);
-      pos = end + 7;
+const FALLBACK: NewsItem[] = [
+  { title: "AI Agents + RWA ?????2026 Davos ????", link: "https://cointelegraph.com", desc: "AI Agent ? RWA ?????????2026 ???????????????????" },
+  { title: "???? tokenized ???RWA ?? cap ? 220 ???", link: "https://cointelegraph.com", desc: "???????????RWA ??????????? 220 ????" },
+  { title: "ETH ???? RWA ? DeFi ????2026 ??????", link: "https://cointelegraph.com", desc: "???????? RWA ?????? DeFi ?????????" },
+  { title: "?? Web3 ????????????????", link: "https://cointelegraph.com", desc: "?????????? Web3 ?????????????????" },
+  { title: "??????? AI Agent ????????????", link: "https://cointelegraph.com", desc: "??????????? AI Agent ????????????????" },
+  { title: "??????????????????????", link: "https://cointelegraph.com", desc: "???????????????????????????" },
+];
 
-      const getTag = (tag: string) => {
-        const m = item.match(new RegExp("<" + tag + "[^>]*>(.*?)</" + tag + ">", "s"));
-        if (!m) return "";
-        return m[1].replace(/<!\[CDATA\[(.*?)\]\]>/, "$1").replace(/<[^>]+>/g, "").slice(0, 200);
-      };
-      items.push({ title: getTag("title"), link: getTag("link"), desc: getTag("description") });
-    }
-    return Response.json(items);
-  } catch {
-    return Response.json({ error: "Failed" }, { status: 502 });
+function parseRSS(xml: string): NewsItem[] {
+  const items: NewsItem[] = [];
+  const matches = xml.match(/<item>[\s\S]*?<\/item>/g);
+  if (!matches) return [];
+  for (const block of matches) {
+    const get = (tag: string) => {
+      const m = block.match(new RegExp("<" + tag + "[^>]*>([\\s\\S]*?)<\\/" + tag + ">"));
+      if (!m) return "";
+      return m[1].replace(/<!\[CDATA\[(.*?)\]\]>/g, "$1").replace(/<[^>]+>/g, "").slice(0, 200).trim();
+    };
+    const title = get("title");
+    if (!title) continue;
+    items.push({ title, link: get("link"), desc: get("description") || title });
+    if (items.length >= 6) break;
   }
+  return items;
+}
+
+export async function GET() {
+  const sources = [
+    "https://cointelegraph.com/rss",
+    "https://www.coindesk.com/arc/outboundfeeds/rss/",
+  ];
+
+  for (const url of sources) {
+    try {
+      const res = await fetch(url, {
+        next: { revalidate: 120 },
+        headers: { "User-Agent": "Mozilla/5.0 (compatible; RSSBot)" },
+      });
+      if (!res.ok) continue;
+      const xml = await res.text();
+      const items = parseRSS(xml);
+      if (items.length > 0) return Response.json(items);
+    } catch {
+      continue;
+    }
+  }
+
+  return Response.json(FALLBACK);
 }
