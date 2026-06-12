@@ -17,9 +17,10 @@ const AuthContext = createContext<AuthContextType | null>(null);
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
-  const supabase = createClient();
+  const [supabase] = useState(() => { try { return createClient(); } catch { return null; } });
 
   useEffect(() => {
+    if (!supabase) { setLoading(false); return; }
     supabase.auth.getSession().then(({ data: { session } }) => {
       setUser(session?.user ?? null);
       setLoading(false);
@@ -31,6 +32,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, [supabase]);
 
   const login = useCallback(async (email: string) => {
+    if (!supabase) return { error: "Supabase not available" };
     const { error } = await supabase.auth.signInWithOtp({
       email,
       options: { shouldCreateUser: true },
@@ -40,6 +42,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, [supabase]);
 
   const verifyOtp = useCallback(async (email: string, token: string) => {
+    if (!supabase) return false;
     const { data, error } = await supabase.auth.verifyOtp({
       email, token, type: "email",
     });
@@ -48,6 +51,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, [supabase]);
 
   const logout = useCallback(async () => {
+    if (!supabase) { setUser(null); return; }
     await supabase.auth.signOut();
     setUser(null);
   }, [supabase]);
