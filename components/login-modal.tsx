@@ -24,7 +24,7 @@ export function LoginModal() {
       <div className="flex items-center gap-2">
         <div className="flex items-center gap-2 rounded-md border border-white/10 bg-white/[0.04] px-3 py-1.5">
           <span className="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-300/20 text-xs font-medium text-emerald-300">
-            {user.email[0].toUpperCase()}
+            {user.email?.[0]?.toUpperCase() ?? "?"}
           </span>
           <span className="max-w-[120px] truncate text-sm text-white/80">
             {user.email}

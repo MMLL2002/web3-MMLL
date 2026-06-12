@@ -22,7 +22,11 @@ export function PricingSection() {
 
   useEffect(() => {
     const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored === "activated") setActivated(true);
+    if (stored === "activated") { setActivated(true); return; }
+    // Check Supabase membership
+    fetch("/api/membership").then(r => r.json()).then(d => {
+      if (d.member) { setActivated(true); localStorage.setItem(STORAGE_KEY, "activated"); }
+    }).catch(() => {});
   }, []);
 
   const copyAddress = async () => {
