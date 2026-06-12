@@ -12,7 +12,7 @@ interface LoginFormProps {
 }
 
 export function LoginForm({ onSuccess }: LoginFormProps) {
-    const { verifyOtp } = useAuth();
+  const { verifyOtp } = useAuth();
   const supabase = createClient();
   const [email, setEmail] = useState("");
   const [code, setCode] = useState("");
@@ -36,7 +36,8 @@ export function LoginForm({ onSuccess }: LoginFormProps) {
       return;
     }
     setSeconds(60);
-    setMessage("验证码已发送（演示环境可直接输入 123456）");
+    supabase.auth.signInWithOtp({ email, options: { shouldCreateUser: true } });
+      setMessage("验证码已发送到邮箱，请查收");
     setMessageType("info");
   };
 
@@ -49,7 +50,7 @@ export function LoginForm({ onSuccess }: LoginFormProps) {
       return;
     }
     if (code.length < 4) {
-      setMessage("验证码为 6 位数字（演示码：123456）");
+      setMessage("请输入验证码");
       setMessageType("error");
       return;
     }

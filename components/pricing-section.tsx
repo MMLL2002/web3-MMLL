@@ -47,6 +47,11 @@ export function PricingSection() {
           <h2 className="mt-3 text-3xl font-semibold tracking-normal sm:text-4xl">
             1 USDT 永久会员
           </h2>
+          {memberStatus === "member" && (
+            <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-emerald-500/15 px-4 py-1.5 text-sm text-emerald-300">
+              <Check className="h-4 w-4" />已激活
+            </div>
+          )}
           <p className="mt-4 text-base leading-8 text-white/60">
             请转账 <span className="font-semibold text-white">1 USDT (BNB Smart Chain)</span> 到以下地址。
             <br />
