@@ -1,5 +1,5 @@
 ﻿/** @type {import('next').NextConfig} */
-// Build trigger
+// Build trigger - redeploy
 const nextConfig = {};
 
 export default nextConfig;
