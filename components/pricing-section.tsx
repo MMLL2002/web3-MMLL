@@ -45,7 +45,7 @@ export function PricingSection() {
         </div>
 
         <div className="mx-auto max-w-lg">
-          <Card className="border-violet-300/30 bg-violet-500/[0.08] shadow-glow">
+          <Card className="border-violet-300/30 bg-violet-500/[0.08] shadow-glow transition-all duration-300 hover:-translate-y-1 hover:shadow-glow">
             <CardContent className="p-6">
               <div className="flex flex-col items-center gap-6">
 

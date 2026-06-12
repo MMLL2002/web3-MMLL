@@ -71,7 +71,7 @@ export default function Home() {
         <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <a href="#home" className="flex items-center gap-3">
-              <Image src="/logo.svg" alt="web3爪子" width={120} height={40} className="h-9 w-auto" priority />
+              <Image src="/logo.png" alt="web3爪子" width={120} height={40} className="h-9 w-auto" priority />
             </a>
             <div className="hidden items-center gap-7 lg:flex">
               {navItems.map((item) => (
@@ -111,6 +111,7 @@ export default function Home() {
       <section id="home" className="relative mx-auto max-w-7xl px-4 pb-20 pt-14 sm:px-6 sm:pb-28 sm:pt-20 lg:px-8">
         <div className="grid items-center gap-10 lg:grid-cols-[1.02fr_0.98fr]">
           <div>
+            <Image src="/logo.png" alt="web3爪子" width={160} height={54} className="mb-5" priority />
             <div className="mb-6 inline-flex items-center gap-2 rounded-md border border-white/12 bg-white/[0.06] px-3 py-2 text-sm text-white/78 backdrop-blur">
               <Sparkles className="h-4 w-4 text-cyan-300" />
               盯行情、抓新闻、发提醒，你的 web3 爪子已上线
@@ -145,7 +146,7 @@ export default function Home() {
 
           <div className="relative animate-float">
             <div className="absolute inset-x-6 -bottom-8 h-24 rounded-full bg-violet-500/24 blur-3xl" />
-            <div className="relative overflow-hidden rounded-lg border border-white/12 bg-[#090d1c]/94 shadow-panel">
+            <div className="relative overflow-hidden rounded-lg border border-violet-400/20 bg-[#090d1c]/94 shadow-panel shadow-violet-500/10">
               <div className="flex h-12 items-center justify-between border-b border-white/10 bg-white/[0.035] px-4">
                 <div className="flex items-center gap-2">
                   <span className="h-3 w-3 rounded-full bg-rose-400" />
@@ -192,7 +193,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="功能" className="relative border-y border-white/10 bg-white/[0.025] py-20">
+      <section id="功能" className="relative border-y border-white/10 bg-gradient-to-b from-violet-500/[0.03] to-transparent py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl">
             <p className="text-sm font-medium text-cyan-200">功能</p>
@@ -207,7 +208,7 @@ export default function Home() {
             {features.map((feature) => {
               const Icon = feature.icon;
               return (
-                <Card key={feature.title} className="group overflow-hidden">
+                <Card key={feature.title} className="group overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-violet-300/30 hover:shadow-glow">
                   <CardHeader>
                     <div className="mb-2 flex h-11 w-11 items-center justify-center rounded-md bg-white/[0.07] text-cyan-200 transition group-hover:bg-cyan-300 group-hover:text-[#07101c]">
                       <Icon className="h-5 w-5" />
@@ -223,6 +224,7 @@ export default function Home() {
       </section>
 
       <section id="新闻" className="relative py-20">
+      <div className="pointer-events-none absolute right-[-80px] top-[-80px] h-[200px] w-[200px] rounded-full bg-violet-500/10 blur-3xl" />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
             <div>
@@ -238,7 +240,7 @@ export default function Home() {
           </div>
           <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             {news.map((item, index) => (
-              <Card key={item} className="overflow-hidden">
+              <Card key={item} className="overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-violet-300/30 hover:shadow-glow">
                 <CardHeader>
                   <div className="mb-4 flex items-center justify-between text-xs text-white/42">
                     <span>情报速递</span>
@@ -255,7 +257,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="分析" className="relative border-y border-white/10 bg-white/[0.025] py-20">
+      <section id="分析" className="relative border-y border-white/10 bg-gradient-to-b from-transparent to-violet-500/[0.03] py-20">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[0.85fr_1.15fr] lg:px-8">
           <div>
             <p className="text-sm font-medium text-cyan-200">实时分析</p>
@@ -270,7 +272,7 @@ export default function Home() {
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </div>
-          <div className="rounded-lg border border-white/10 bg-[#090d1c]/86 p-4 shadow-panel">
+          <div className="rounded-lg border border-white/10 bg-[#090d1c]/86 p-4 shadow-panel transition-all duration-300 hover:border-violet-300/20 hover:shadow-glow">
             <div className="mb-4 flex items-center justify-between">
               <p className="font-medium">BTC / ETH 趋势 mock</p>
               <ShieldAlert className="h-4 w-4 text-amber-300" />
@@ -294,7 +296,7 @@ export default function Home() {
 
       <PricingSection />
 
-      <section id="控制台" className="relative border-y border-white/10 bg-gradient-to-r from-cyan-500/10 via-violet-500/10 to-fuchsia-500/10 py-20">
+      <section id="控制台" className="relative border-y border-white/10 bg-gradient-to-r from-violet-500/12 via-cyan-500/10 to-violet-500/12 py-20">
         <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-8 px-4 sm:px-6 lg:flex-row lg:items-center lg:px-8">
           <div className="max-w-2xl">
             <h2 className="text-3xl font-semibold tracking-normal sm:text-4xl">
@@ -318,7 +320,7 @@ export default function Home() {
 
       <footer className="border-t border-white/10 py-8">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 text-sm text-white/45 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
-          <p>© 2026 web3爪子. 行情很多，别一个人扛。</p>
+          <p>© 2026 web3爪子. 行情多，别一个人扛。</p>
           <div className="flex gap-5">
             <a href="#功能" className="hover:text-white">功能</a>
             <a href="#定价" className="hover:text-white">定价</a>
