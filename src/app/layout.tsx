@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 
 import "./globals.css";
-import { AuthProvider } from "@/lib/auth-context";
 
 export const metadata: Metadata = {
   title: "web3爪子 - 你的个人 Web3 爪子",
@@ -10,9 +9,6 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: "#050710",
-  width: "device-width",
-  initialScale: 1,
-  maximumScale: 1,
 };
 
 export default function RootLayout({
@@ -22,9 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN" className="dark">
-      <body>
-        <AuthProvider>{children}</AuthProvider>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
