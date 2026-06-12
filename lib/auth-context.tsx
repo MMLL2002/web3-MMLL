@@ -1,63 +1,32 @@
-"use client";
+﻿"use client";
 
-import { createContext, useContext, useEffect, useState, useCallback, type ReactNode } from "react";
-import { createClient } from "@/lib/supabase/client";
-import type { User } from "@supabase/supabase-js";
+import { createContext, useContext, useState, useCallback, type ReactNode } from "react";
+
+interface User {
+  email: string;
+}
 
 interface AuthContextType {
   user: User | null;
-  loading: boolean;
-  login: (email: string) => Promise<{ error?: string }>;
-  verifyOtp: (email: string, token: string) => Promise<boolean>;
-  logout: () => Promise<void>;
+  login: (email: string) => void;
+  logout: () => void;
 }
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [supabase] = useState(() => { try { return createClient(); } catch { return null; } });
 
-  useEffect(() => {
-    if (!supabase) { setLoading(false); return; }
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setUser(session?.user ?? null);
-      setLoading(false);
-    });
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user ?? null);
-    });
-    return () => subscription.unsubscribe();
-  }, [supabase]);
+  const login = useCallback((email: string) => {
+    setUser({ email });
+  }, []);
 
-  const login = useCallback(async (email: string) => {
-    if (!supabase) return { error: "Supabase not available" };
-    const { error } = await supabase.auth.signInWithOtp({
-      email,
-      options: { shouldCreateUser: true },
-    });
-    if (error) return { error: error.message };
-    return {};
-  }, [supabase]);
-
-  const verifyOtp = useCallback(async (email: string, token: string) => {
-    if (!supabase) return false;
-    const { data, error } = await supabase.auth.verifyOtp({
-      email, token, type: "email",
-    });
-    if (error) return false;
-    return !!data.session;
-  }, [supabase]);
-
-  const logout = useCallback(async () => {
-    if (!supabase) { setUser(null); return; }
-    await supabase.auth.signOut();
+  const logout = useCallback(() => {
     setUser(null);
-  }, [supabase]);
+  }, []);
 
   return (
-    <AuthContext.Provider value={{ user, loading, login, verifyOtp, logout }}>
+    <AuthContext.Provider value={{ user, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

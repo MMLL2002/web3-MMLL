@@ -1,23 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Check, Copy, MessageCircle } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { useAuth } from "@/lib/auth-context";
 import { Card, CardContent } from "@/components/ui/card";
 
 export function PricingSection() {
   const [copied, setCopied] = useState(false);
-  const [memberStatus, setMemberStatus] = useState("loading");
-  const { user } = useAuth();
-
-  useEffect(() => {
-    if (!user) { setMemberStatus("none"); return; }
-    fetch("/api/membership").then(r => r.json()).then(d => {
-      setMemberStatus(d.member ? "member" : "none");
-    }).catch(() => setMemberStatus("none"));
-  }, [user]);
 
   const WALLET_ADDRESS = "0xdf8fDc664D5986e024510eAfD6409Bf22CfB30a0";
 
@@ -47,11 +37,6 @@ export function PricingSection() {
           <h2 className="mt-3 text-3xl font-semibold tracking-normal sm:text-4xl">
             1 USDT 永久会员
           </h2>
-          {memberStatus === "member" && (
-            <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-emerald-500/15 px-4 py-1.5 text-sm text-emerald-300">
-              <Check className="h-4 w-4" />已激活
-            </div>
-          )}
           <p className="mt-4 text-base leading-8 text-white/60">
             请转账 <span className="font-semibold text-white">1 USDT (BNB Smart Chain)</span> 到以下地址。
             <br />

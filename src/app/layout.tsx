@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
+
 import "./globals.css";
-import { AuthProvider } from "@/lib/auth-context";
 
 export const metadata: Metadata = {
   title: "web3爪子 - 你的个人 Web3 爪子",
@@ -11,12 +11,14 @@ export const viewport: Viewport = {
   themeColor: "#050710",
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html lang="zh-CN" className="dark">
-      <body>
-        <AuthProvider>{children}</AuthProvider>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

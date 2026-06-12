@@ -5,15 +5,13 @@ import { Loader2, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useAuth } from "@/lib/auth-context";
-import { createClient } from "@/lib/supabase/client";
 
 interface LoginFormProps {
   onSuccess?: () => void;
 }
 
 export function LoginForm({ onSuccess }: LoginFormProps) {
-  const { verifyOtp } = useAuth();
-  const supabase = createClient();
+  const { login } = useAuth();
   const [email, setEmail] = useState("");
   const [code, setCode] = useState("");
   const [seconds, setSeconds] = useState(0);
@@ -36,8 +34,7 @@ export function LoginForm({ onSuccess }: LoginFormProps) {
       return;
     }
     setSeconds(60);
-    supabase.auth.signInWithOtp({ email, options: { shouldCreateUser: true } });
-      setMessage("验证码已发送到邮箱，请查收");
+    setMessage("验证码已发送（演示环境可直接输入 123456）");
     setMessageType("info");
   };
 
@@ -49,8 +46,8 @@ export function LoginForm({ onSuccess }: LoginFormProps) {
       setMessageType("error");
       return;
     }
-    if (code.length < 4) {
-      setMessage("请输入验证码");
+    if (code.length !== 6 || !/^\d{6}$/.test(code)) {
+      setMessage("验证码为 6 位数字（演示码：123456）");
       setMessageType("error");
       return;
     }
@@ -59,17 +56,13 @@ export function LoginForm({ onSuccess }: LoginFormProps) {
     setMessage("正在验证...");
     setMessageType("info");
 
-        verifyOtp(email, code).then((ok) => {
+    setTimeout(() => {
       setSubmitting(false);
-      if (ok) {
-        setMessage("登录成功！");
-        setMessageType("success");
-        if (onSuccess) setTimeout(onSuccess, 600);
-      } else {
-        setMessage("验证码错误或已过期");
-        setMessageType("error");
-      }
-    });
+      login(email);
+      setMessage(`欢迎回来，${email.split("@")[0]}！`);
+      setMessageType("success");
+      if (onSuccess) setTimeout(onSuccess, 600);
+    }, 1200);
   };
 
   return (
