@@ -13,6 +13,8 @@ import {
   Zap,
 } from "lucide-react";
 
+import Image from "next/image";
+
 import { LoginModal } from "@/components/login-modal";
 import { MarketTicker } from "@/components/market-ticker";
 import { PricingSection } from "@/components/pricing-section";
@@ -29,23 +31,23 @@ const navItems = ["首页", "功能", "新闻", "分析", "定价", "控制台"]
 const features = [
   {
     icon: BarChart3,
-    title: "币安合约 AI 分析",
-    text: "多周期 K 线 + 指标自动解读，给出高抛低吸策略。提醒一句：这不是投资建议。",
+    title: "币安合约盯盘",
+    text: "AI 自动解读 K 线和技术指标，高抛低吸信号一目了然",
   },
   {
     icon: Newspaper,
-    title: "Web3 实时新闻",
-    text: "自动抓取并总结 RWA、AI Agent、监管动态，把重点翻成能看懂的中文。",
+    title: "Web3 新闻情报",
+    text: "自动抓取 RWA、AI Agent、监管动态，把重点翻译成你能看懂的中文",
   },
   {
     icon: BrainCircuit,
-    title: "主流币深度分析",
-    text: "BTC、ETH 等价格预测，结合技术面、链上数据和机构观点一起看。",
+    title: "主流币深度研判",
+    text: "BTC、ETH 价格预测 + 技术面 + 链上数据 + 机构观点，综合给你答案",
   },
   {
     icon: MessageCircle,
-    title: "个人 Agent 自动化",
-    text: "Telegram / WhatsApp 监控、RWA 警报、任务循环执行，让代理自己跑起来。",
+    title: "自动化任务执行",
+    text: "Telegram/WhatsApp 监控、RWA 警报、策略循环执行，让代理 7x24 跑起来",
   },
 ];
 
@@ -69,16 +71,7 @@ export default function Home() {
         <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <a href="#home" className="flex items-center gap-3">
-              <span className="flex h-9 w-9 items-center justify-center rounded-md bg-white text-[#070918] shadow-glow">
-                <svg viewBox="0 0 24 24" className="h-5 w-5 stroke-[#070918]" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="7" cy="9" r="2.5"/>
-                    <circle cx="17" cy="9" r="2.5"/>
-                    <circle cx="5" cy="17" r="2.5"/>
-                    <circle cx="19" cy="17" r="2.5"/>
-                    <path d="M7 12.5c0 2 2 3.5 5 3.5s5-1.5 5-3.5"/>
-                  </svg>
-              </span>
-              <span className="text-lg font-semibold tracking-normal">web3爪子</span>
+              <Image src="/logo.svg" alt="web3爪子" width={120} height={40} className="h-9 w-auto" priority />
             </a>
             <div className="hidden items-center gap-7 lg:flex">
               {navItems.map((item) => (
@@ -120,7 +113,7 @@ export default function Home() {
           <div>
             <div className="mb-6 inline-flex items-center gap-2 rounded-md border border-white/12 bg-white/[0.06] px-3 py-2 text-sm text-white/78 backdrop-blur">
               <Sparkles className="h-4 w-4 text-cyan-300" />
-              Web3 行情、新闻、消息提醒，一只 AI 爪子全包
+              盯行情、抓新闻、发提醒，你的 web3 爪子已上线
             </div>
             <h1 className="text-balance max-w-4xl text-5xl font-semibold leading-tight tracking-normal sm:text-6xl lg:text-7xl">
               你的个人
@@ -129,17 +122,17 @@ export default function Home() {
               </span>
             </h1>
             <p className="text-balance mt-6 max-w-2xl text-base leading-8 text-white/68 sm:text-lg">
-              实时监控币安合约、抓取 Web3 新闻、深度分析主流币，像真人一样帮你自动化交易和决策。
+              实时监控币安行情、抓取 Web3 新闻、深度分析主流币，像贴身助手一样帮你自动化操作
             </p>
             <div className="mt-9 flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row">
               <Button size="lg">
                 <Zap className="mr-2 h-5 w-5" />
-                立即启动 AI 代理
+                立即启动
               </Button>
               <Button asChild variant="outline" size="lg">
                 <a href="#控制台">
                   <Bot className="mr-2 h-5 w-5" />
-                  打开网页控制台
+                  打开控制台
                 </a>
               </Button>
             </div>
@@ -204,10 +197,10 @@ export default function Home() {
           <div className="max-w-2xl">
             <p className="text-sm font-medium text-cyan-200">功能</p>
             <h2 className="mt-3 text-3xl font-semibold tracking-normal sm:text-4xl">
-              给 Web3 玩家准备的 AI 网页代理
+              给 Web3 玩家准备的全能爪子
             </h2>
             <p className="mt-4 text-white/58">
-              它不只是聊天，会主动看盘、追新闻、发提醒，还能把重复任务一轮轮跑完。
+              不只会聊天，还会主动看盘、追新闻、发提醒，把重复任务跑完
             </p>
           </div>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -233,13 +226,13 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
             <div>
-              <p className="text-sm font-medium text-violet-200">Web3 新闻</p>
+              <p className="text-sm font-medium text-violet-200">Web3 情报</p>
               <h2 className="mt-3 text-3xl font-semibold tracking-normal sm:text-4xl">
                 最新 Web3 动态
               </h2>
             </div>
             <Button variant="outline">
-              自动刷新新闻
+              刷新情报
               <ChevronRight className="ml-2 h-4 w-4" />
             </Button>
           </div>
@@ -248,7 +241,7 @@ export default function Home() {
               <Card key={item} className="overflow-hidden">
                 <CardHeader>
                   <div className="mb-4 flex items-center justify-between text-xs text-white/42">
-                    <span>Mock News</span>
+                    <span>情报速递</span>
                     <span>{index + 1} 小时前</span>
                   </div>
                   <CardTitle className="leading-7">{item}</CardTitle>
@@ -265,7 +258,7 @@ export default function Home() {
       <section id="分析" className="relative border-y border-white/10 bg-white/[0.025] py-20">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[0.85fr_1.15fr] lg:px-8">
           <div>
-            <p className="text-sm font-medium text-cyan-200">主流币分析</p>
+            <p className="text-sm font-medium text-cyan-200">实时分析</p>
             <h2 className="mt-3 text-3xl font-semibold tracking-normal sm:text-4xl">
               主流币实时分析
             </h2>
@@ -273,7 +266,7 @@ export default function Home() {
               BTC：当前约 62,000 美元区间震荡，机构长期看好。ETH：约 1,670 美元附近，RWA + 稳定币驱动，2026 年有望强势表现。
             </p>
             <Button className="mt-7">
-              启动 AI 深度分析
+              AI 深度分析
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </div>
@@ -305,16 +298,16 @@ export default function Home() {
         <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-8 px-4 sm:px-6 lg:flex-row lg:items-center lg:px-8">
           <div className="max-w-2xl">
             <h2 className="text-3xl font-semibold tracking-normal sm:text-4xl">
-              打开 web3爪子 网页控制台，让它替你盯盘和跑消息
+              打开 web3爪子 控制台，让它替你全天候盯盘
             </h2>
             <p className="mt-4 text-white/62">
-              当前是 mock 启动入口，后面可以接真实账号系统、会员状态和自动激活流程。
+              当前 mock 入口，后续可接真实账号系统、会员状态和自动激活
             </p>
           </div>
           <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
             <Button size="lg">
               <Zap className="mr-2 h-5 w-5" />
-              启动网页代理
+              启动 AI 代理
             </Button>
             <Button asChild variant="outline" size="lg">
               <a href="/login">登录控制台</a>
@@ -325,7 +318,7 @@ export default function Home() {
 
       <footer className="border-t border-white/10 py-8">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 text-sm text-white/45 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
-          <p>© 2026 web3爪子. Web3 信息很多，别一个人硬盯。</p>
+          <p>© 2026 web3爪子. 行情很多，别一个人扛。</p>
           <div className="flex gap-5">
             <a href="#功能" className="hover:text-white">功能</a>
             <a href="#定价" className="hover:text-white">定价</a>

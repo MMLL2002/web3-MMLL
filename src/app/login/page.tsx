@@ -27,9 +27,9 @@ export default function LoginPage() {
           <span className="text-lg font-semibold">web3爪子</span>
         </Link>
         <div className="mb-7">
-          <h1 className="text-3xl font-semibold tracking-normal">登录你的 AI 代理</h1>
+          <h1 className="text-3xl font-semibold tracking-normal">登录你的 web3爪子</h1>
           <p className="mt-3 text-sm leading-6 text-white/58">
-            用邮箱验证码登录。现在是 mock 流程，后面可以直接接真实后端。
+            邮箱验证码登录，当前为 mock 流程，后续可直接接真实后端。
           </p>
         </div>
         <LoginForm onSuccess={() => router.push("/")} />

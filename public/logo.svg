@@ -1,0 +1,16 @@
+﻿<svg width="280" height="80" viewBox="0 0 280 80" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#67e8f9"/>
+      <stop offset="50%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#c4b5fd"/>
+    </linearGradient>
+  </defs>
+  <circle cx="18" cy="22" r="5" fill="url(#g)" opacity="0.9"/>
+  <circle cx="36" cy="22" r="5" fill="url(#g)" opacity="0.9"/>
+  <circle cx="10" cy="42" r="5" fill="url(#g)" opacity="0.9"/>
+  <circle cx="44" cy="42" r="5" fill="url(#g)" opacity="0.9"/>
+  <path d="M18 32c0 5 3 10 9 10s9-5 9-10" stroke="url(#g)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <text x="65" y="32" font-family="system-ui,sans-serif,Segoe UI" font-size="22" font-weight="700" fill="white" letter-spacing="2">web3</text>
+  <text x="65" y="58" font-family="system-ui,sans-serif,Segoe UI" font-size="26" font-weight="700" fill="url(#g)" letter-spacing="3">爪子</text>
+</svg>

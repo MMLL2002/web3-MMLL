@@ -26,7 +26,7 @@ export function PricingSection() {
             超值永久会员
           </h2>
           <p className="mt-4 text-base leading-8 text-white/60">
-            一次性支付 1 USDT 即可永久使用所有功能。现在先走手动确认，后续可以接 Binance API webhook 自动激活。
+            只需 1 USDT，一次付费，永久解锁全部功能。先手动确认，后续可接 Binance API webhook 自动激活。
           </p>
         </div>
 
@@ -55,7 +55,7 @@ export function PricingSection() {
                 />
               </div>
               <div className="space-y-4">
-                {["永久解锁全部 Web3 AI 功能", "币安合约分析 + 主流币预测", "Telegram 群通知和激活支持"].map((item) => (
+                {["永久解锁全部功能", "币安合约 + 主流币分析", "Telegram 群激活支持"].map((item) => (
                   <div key={item} className="flex items-center gap-3 text-sm text-white/68">
                     <Check className="h-4 w-4 text-emerald-300" />
                     {item}
@@ -75,7 +75,7 @@ export function PricingSection() {
                   ) : paymentState === "success" ? (
                     "付款成功！正在激活会员..."
                   ) : (
-                    "已支付确认"
+                    "我已支付，确认激活"
                   )}
                 </Button>
                 <Button asChild variant="outline" className="w-full" size="lg">
