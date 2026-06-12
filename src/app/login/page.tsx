@@ -24,7 +24,7 @@ export default function LoginPage() {
           <span className="flex h-10 w-10 items-center justify-center rounded-md bg-white text-[#070918] shadow-glow">
             <Bot className="h-5 w-5" />
           </span>
-          <span className="text-lg font-semibold">LexAI</span>
+          <span className="text-lg font-semibold">web3爪子</span>
         </Link>
         <div className="mb-7">
           <h1 className="text-3xl font-semibold tracking-normal">登录你的 AI 代理</h1>

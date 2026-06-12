@@ -47,7 +47,7 @@ export function LoginModal() {
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>登录 LexAI</DialogTitle>
+          <DialogTitle>登录 web3爪子</DialogTitle>
           <DialogDescription>
             邮箱验证码登录。弹窗和独立页面共用同一套表单，后续接后端会很省事。
           </DialogDescription>

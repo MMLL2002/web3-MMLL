@@ -70,9 +70,15 @@ export default function Home() {
           <div className="flex h-16 items-center justify-between">
             <a href="#home" className="flex items-center gap-3">
               <span className="flex h-9 w-9 items-center justify-center rounded-md bg-white text-[#070918] shadow-glow">
-                <Bot className="h-5 w-5" />
+                <svg viewBox="0 0 24 24" className="h-5 w-5 stroke-[#070918]" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="7" cy="9" r="2.5"/>
+                    <circle cx="17" cy="9" r="2.5"/>
+                    <circle cx="5" cy="17" r="2.5"/>
+                    <circle cx="19" cy="17" r="2.5"/>
+                    <path d="M7 12.5c0 2 2 3.5 5 3.5s5-1.5 5-3.5"/>
+                  </svg>
               </span>
-              <span className="text-lg font-semibold tracking-normal">LexAI</span>
+              <span className="text-lg font-semibold tracking-normal">web3爪子</span>
             </a>
             <div className="hidden items-center gap-7 lg:flex">
               {navItems.map((item) => (
@@ -119,7 +125,7 @@ export default function Home() {
             <h1 className="text-balance max-w-4xl text-5xl font-semibold leading-tight tracking-normal sm:text-6xl lg:text-7xl">
               你的个人
               <span className="block bg-gradient-to-r from-cyan-200 via-white to-violet-300 bg-clip-text text-transparent">
-                Web3 AI 爪子
+                Web3 爪子
               </span>
             </h1>
             <p className="text-balance mt-6 max-w-2xl text-base leading-8 text-white/68 sm:text-lg">
@@ -299,7 +305,7 @@ export default function Home() {
         <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-8 px-4 sm:px-6 lg:flex-row lg:items-center lg:px-8">
           <div className="max-w-2xl">
             <h2 className="text-3xl font-semibold tracking-normal sm:text-4xl">
-              打开 LexAI 网页控制台，让它替你盯盘和跑消息
+              打开 web3爪子 网页控制台，让它替你盯盘和跑消息
             </h2>
             <p className="mt-4 text-white/62">
               当前是 mock 启动入口，后面可以接真实账号系统、会员状态和自动激活流程。
@@ -319,7 +325,7 @@ export default function Home() {
 
       <footer className="border-t border-white/10 py-8">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 text-sm text-white/45 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
-          <p>© 2026 LexAI. Web3 信息很多，别一个人硬盯。</p>
+          <p>© 2026 web3爪子. Web3 信息很多，别一个人硬盯。</p>
           <div className="flex gap-5">
             <a href="#功能" className="hover:text-white">功能</a>
             <a href="#定价" className="hover:text-white">定价</a>
