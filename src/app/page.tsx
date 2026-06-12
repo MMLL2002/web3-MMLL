@@ -24,6 +24,26 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
+function ClawIcon() {
+  return (
+    <svg className="logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="cg" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#a78bfa" /><stop offset="1" stopColor="#22d3ee" />
+        </linearGradient>
+      </defs>
+      <ellipse cx="12" cy="14.5" rx="3.8" ry="3.2" fill="url(#cg)" opacity="0.9" />
+      <ellipse cx="12" cy="5.5" rx="2.4" ry="2.1" fill="url(#cg)" opacity="0.85" />
+      <ellipse cx="5" cy="9.5" rx="2.4" ry="2.1" fill="url(#cg)" opacity="0.85" />
+      <ellipse cx="19" cy="9.5" rx="2.4" ry="2.1" fill="url(#cg)" opacity="0.85" />
+      <ellipse cx="6.5" cy="19" rx="2.2" ry="2" fill="url(#cg)" opacity="0.75" />
+      <ellipse cx="17.5" cy="19" rx="2.2" ry="2" fill="url(#cg)" opacity="0.75" />
+    </svg>
+  );
+}
+
+
+
 const navItems = ["首页", "功能", "新闻", "分析", "定价", "控制台"];
 
 const features = [
@@ -65,13 +85,13 @@ export default function Home() {
       <div className="pointer-events-none absolute left-1/2 top-[-180px] h-[220px] w-[220px] -translate-x-1/2 rounded-full bg-violet-600/25 blur-3xl sm:h-[440px] sm:w-[440px]" />
       <div className="pointer-events-none absolute right-[-60px] top-[420px] h-[180px] w-[180px] rounded-full bg-cyan-500/16 blur-3xl sm:right-[-120px] sm:h-[340px] sm:w-[340px]" />
 
-      <header className="border-b border-white/10">
-        <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <header className="site-header">
+        <div className="header-inner">
           <div className="flex h-16 items-center justify-between">
             <a href="#home" className="flex items-center gap-3">
-              <span className="text-xl font-bold bg-gradient-to-r from-cyan-200 via-white to-violet-300 bg-clip-text text-transparent">web3爪子</span>
+              <ClawIcon /><span className="logo-text">web3爪子</span>
             </a>
-            <div className="hidden items-center gap-7 lg:flex">
+            <div className="nav-desktop">
               {navItems.map((item) => (
                 <a
                   key={item}
@@ -92,7 +112,8 @@ export default function Home() {
               </Button>
             </div>
           </div>
-          <div className="-mx-4 flex gap-1 overflow-x-auto border-t border-white/8 px-4 pb-3 pt-1 lg:hidden">
+          </div>
+      <div className="nav-mobile">
             {navItems.map((item) => (
               <a
                 key={item}
@@ -103,7 +124,6 @@ export default function Home() {
               </a>
             ))}
           </div>
-        </nav>
       </header>
 
       <section id="home" className="relative mx-auto max-w-7xl px-4 pb-8 pt-6 sm:px-6 sm:pb-28 sm:pt-20 lg:px-8">
