@@ -1,7 +1,6 @@
 ﻿"use client";
 
 import { useEffect } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { LoginForm } from "@/components/login-form";
@@ -21,7 +20,7 @@ export default function LoginPage() {
       <div className="pointer-events-none absolute left-1/2 top-[-160px] h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-violet-600/25 blur-3xl" />
       <section className="relative w-full max-w-md rounded-lg border border-white/10 bg-[#090d1c]/92 p-5 sm:p-6 shadow-panel backdrop-blur-xl">
         <Link href="/" className="mb-8 block">
-          <Image src="/logo.png" alt="web3爪子" width={140} height={48} className="h-10 w-auto" priority />
+          <span className="text-xl font-bold bg-gradient-to-r from-cyan-200 via-white to-violet-300 bg-clip-text text-transparent">web3爪子</span>
         </Link>
         <div className="mb-7">
           <h1 className="text-3xl font-semibold tracking-normal">登录你的 web3爪子</h1>

@@ -13,8 +13,6 @@ import {
   Zap,
 } from "lucide-react";
 
-import Image from "next/image";
-
 import { LoginModal } from "@/components/login-modal";
 import { MarketTicker } from "@/components/market-ticker";
 import { PricingSection } from "@/components/pricing-section";
@@ -71,7 +69,7 @@ export default function Home() {
         <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <a href="#home" className="flex items-center gap-3">
-              <Image src="/logo.png" alt="web3爪子" width={120} height={40} className="h-9 w-auto" priority />
+              <span className="text-xl font-bold bg-gradient-to-r from-cyan-200 via-white to-violet-300 bg-clip-text text-transparent">web3爪子</span>
             </a>
             <div className="hidden items-center gap-7 lg:flex">
               {navItems.map((item) => (
@@ -111,7 +109,7 @@ export default function Home() {
       <section id="home" className="relative mx-auto max-w-7xl px-4 pb-8 pt-6 sm:px-6 sm:pb-28 sm:pt-20 lg:px-8">
         <div className="grid items-center gap-6 lg:gap-10 lg:grid-cols-[1.02fr_0.98fr]">
           <div>
-            <Image src="/logo.png" alt="web3爪子" width={160} height={54} className="mb-3 sm:mb-5" priority />
+            <span className="mb-3 sm:mb-5 inline-block text-2xl sm:text-3xl font-bold bg-gradient-to-r from-cyan-200 via-white to-violet-300 bg-clip-text text-transparent">web3爪子</span>
             <div className="mb-6 inline-flex items-center gap-2 rounded-md border border-white/12 bg-white/[0.06] px-3 py-2 text-sm text-white/78 backdrop-blur">
               <Sparkles className="h-4 w-4 text-cyan-300" />
               盯行情、抓新闻、发提醒，你的 web3 爪子已上线
