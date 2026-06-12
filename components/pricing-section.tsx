@@ -30,7 +30,7 @@ export function PricingSection() {
   };
 
   return (
-    <section id="定价" className="relative py-20">
+    <section id="定价" className="relative py-14 sm:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-10 max-w-2xl">
           <p className="text-sm font-medium text-violet-200">定价</p>

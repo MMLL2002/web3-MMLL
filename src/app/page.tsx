@@ -62,7 +62,7 @@ const news = [
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[#050710] text-white">
+    <main className="relative min-h-screen bg-[#050710] text-white">
       <div className="grid-bg pointer-events-none absolute inset-0 opacity-75" />
       <div className="pointer-events-none absolute left-1/2 top-[-180px] h-[440px] w-[440px] -translate-x-1/2 rounded-full bg-violet-600/25 blur-3xl" />
       <div className="pointer-events-none absolute right-[-120px] top-[420px] h-[340px] w-[340px] rounded-full bg-cyan-500/16 blur-3xl" />
