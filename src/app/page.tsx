@@ -108,24 +108,24 @@ export default function Home() {
         </nav>
       </header>
 
-      <section id="home" className="relative mx-auto max-w-7xl px-4 pb-20 pt-14 sm:px-6 sm:pb-28 sm:pt-20 lg:px-8">
-        <div className="grid items-center gap-10 lg:grid-cols-[1.02fr_0.98fr]">
+      <section id="home" className="relative mx-auto max-w-7xl px-4 pb-12 pt-8 sm:px-6 sm:pb-28 sm:pt-20 lg:px-8">
+        <div className="grid items-center gap-6 lg:gap-10 lg:grid-cols-[1.02fr_0.98fr]">
           <div>
-            <Image src="/logo.png" alt="web3爪子" width={160} height={54} className="mb-5" priority />
+            <Image src="/logo.png" alt="web3爪子" width={160} height={54} className="mb-3 sm:mb-5" priority />
             <div className="mb-6 inline-flex items-center gap-2 rounded-md border border-white/12 bg-white/[0.06] px-3 py-2 text-sm text-white/78 backdrop-blur">
               <Sparkles className="h-4 w-4 text-cyan-300" />
               盯行情、抓新闻、发提醒，你的 web3 爪子已上线
             </div>
-            <h1 className="text-balance max-w-4xl text-5xl font-semibold leading-tight tracking-normal sm:text-6xl lg:text-7xl">
+            <h1 className="text-balance max-w-4xl text-[2rem] font-semibold leading-tight tracking-normal sm:text-5xl lg:text-6xl">
               你的个人
               <span className="block bg-gradient-to-r from-cyan-200 via-white to-violet-300 bg-clip-text text-transparent">
                 Web3 爪子
               </span>
             </h1>
-            <p className="text-balance mt-6 max-w-2xl text-base leading-8 text-white/68 sm:text-lg">
+            <p className="text-balance mt-5 max-w-2xl text-sm leading-7 text-white/68 sm:text-lg">
               实时监控币安行情、抓取 Web3 新闻、深度分析主流币，像贴身助手一样帮你自动化操作
             </p>
-            <div className="mt-9 flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row">
+            <div className="mt-7 flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row">
               <Button size="lg">
                 <Zap className="mr-2 h-5 w-5" />
                 立即启动
@@ -137,7 +137,7 @@ export default function Home() {
                 </a>
               </Button>
             </div>
-            <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm text-white/48">
+            <div className="mt-4 flex flex-wrap gap-x-4 gap-y-1.5 text-xs text-white/48 sm:text-sm">
               <span>Binance 行情示例</span>
               <span>CoinGecko API 可替换</span>
               <span>Telegram 群提醒</span>
@@ -193,7 +193,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="功能" className="relative border-y border-white/10 bg-gradient-to-b from-violet-500/[0.03] to-transparent py-20">
+      <section id="功能" className="relative border-y border-white/10 bg-gradient-to-b from-violet-500/[0.03] to-transparent py-14 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl">
             <p className="text-sm font-medium text-cyan-200">功能</p>
@@ -204,7 +204,7 @@ export default function Home() {
               不只会聊天，还会主动看盘、追新闻、发提醒，把重复任务跑完
             </p>
           </div>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-8 grid gap-3 sm:mt-10 sm:grid-cols-2 lg:grid-cols-4">
             {features.map((feature) => {
               const Icon = feature.icon;
               return (
@@ -238,7 +238,7 @@ export default function Home() {
               <ChevronRight className="ml-2 h-4 w-4" />
             </Button>
           </div>
-          <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          <div className="mt-8 grid gap-3 sm:mt-10 md:grid-cols-2 xl:grid-cols-3">
             {news.map((item, index) => (
               <Card key={item} className="overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-violet-300/30 hover:shadow-glow">
                 <CardHeader>
@@ -257,8 +257,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="分析" className="relative border-y border-white/10 bg-gradient-to-b from-transparent to-violet-500/[0.03] py-20">
-        <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[0.85fr_1.15fr] lg:px-8">
+      <section id="分析" className="relative border-y border-white/10 bg-gradient-to-b from-transparent to-violet-500/[0.03] py-14 sm:py-20">
+        <div className="mx-auto grid max-w-7xl gap-6 lg:gap-8 px-4 sm:px-6 lg:grid-cols-[0.85fr_1.15fr] lg:px-8">
           <div>
             <p className="text-sm font-medium text-cyan-200">实时分析</p>
             <h2 className="mt-3 text-3xl font-semibold tracking-normal sm:text-4xl">
@@ -296,8 +296,8 @@ export default function Home() {
 
       <PricingSection />
 
-      <section id="控制台" className="relative border-y border-white/10 bg-gradient-to-r from-violet-500/12 via-cyan-500/10 to-violet-500/12 py-20">
-        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-8 px-4 sm:px-6 lg:flex-row lg:items-center lg:px-8">
+      <section id="控制台" className="relative border-y border-white/10 bg-gradient-to-r from-violet-500/12 via-cyan-500/10 to-violet-500/12 py-14 sm:py-20">
+        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 lg:gap-8 px-4 sm:px-6 lg:flex-row lg:items-center lg:px-8">
           <div className="max-w-2xl">
             <h2 className="text-3xl font-semibold tracking-normal sm:text-4xl">
               打开 web3爪子 控制台，让它替你全天候盯盘

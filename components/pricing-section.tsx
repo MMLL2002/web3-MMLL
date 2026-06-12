@@ -44,9 +44,9 @@ export function PricingSection() {
           </p>
         </div>
 
-        <div className="mx-auto max-w-lg">
+        <div className="mx-auto w-full max-w-lg">
           <Card className="border-violet-300/30 bg-violet-500/[0.08] shadow-glow transition-all duration-300 hover:-translate-y-1 hover:shadow-glow">
-            <CardContent className="p-6">
+            <CardContent className="p-4 sm:p-6">
               <div className="flex flex-col items-center gap-6">
 
                 {/* Network Badge */}
@@ -103,7 +103,7 @@ export function PricingSection() {
                 <Button
                   asChild
                   size="lg"
-                  className="w-full gap-2 bg-gradient-to-r from-violet-500 to-cyan-500 text-base shadow-lg hover:from-violet-400 hover:to-cyan-400"
+                  className="w-full gap-2 bg-gradient-to-r from-violet-500 to-cyan-500 text-sm sm:text-base shadow-lg hover:from-violet-400 hover:to-cyan-400"
                 >
                   <a href="https://t.me/+-hTIvB6moWo4YWY1" target="_blank" rel="noreferrer">
                     我已支付 →
