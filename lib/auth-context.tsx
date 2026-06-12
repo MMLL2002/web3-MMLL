@@ -1,32 +1,59 @@
-﻿"use client";
+"use client";
 
-import { createContext, useContext, useState, useCallback, type ReactNode } from "react";
-
-interface User {
-  email: string;
-}
+import { createContext, useContext, useEffect, useState, useCallback, type ReactNode } from "react";
+import { createClient } from "@/lib/supabase/client";
+import type { User } from "@supabase/supabase-js";
 
 interface AuthContextType {
   user: User | null;
-  login: (email: string) => void;
-  logout: () => void;
+  loading: boolean;
+  login: (email: string) => Promise<{ error?: string }>;
+  verifyOtp: (email: string, token: string) => Promise<boolean>;
+  logout: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
+  const supabase = createClient();
 
-  const login = useCallback((email: string) => {
-    setUser({ email });
-  }, []);
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
+      setLoading(false);
+    });
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+    });
+    return () => subscription.unsubscribe();
+  }, [supabase]);
 
-  const logout = useCallback(() => {
+  const login = useCallback(async (email: string) => {
+    const { error } = await supabase.auth.signInWithOtp({
+      email,
+      options: { shouldCreateUser: true },
+    });
+    if (error) return { error: error.message };
+    return {};
+  }, [supabase]);
+
+  const verifyOtp = useCallback(async (email: string, token: string) => {
+    const { data, error } = await supabase.auth.verifyOtp({
+      email, token, type: "email",
+    });
+    if (error) return false;
+    return !!data.session;
+  }, [supabase]);
+
+  const logout = useCallback(async () => {
+    await supabase.auth.signOut();
     setUser(null);
-  }, []);
+  }, [supabase]);
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, loading, login, verifyOtp, logout }}>
       {children}
     </AuthContext.Provider>
   );

@@ -1,13 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Check, Copy, MessageCircle } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/lib/auth-context";
 import { Card, CardContent } from "@/components/ui/card";
 
 export function PricingSection() {
   const [copied, setCopied] = useState(false);
+  const [memberStatus, setMemberStatus] = useState("loading");
+  const { user } = useAuth();
+
+  useEffect(() => {
+    if (!user) { setMemberStatus("none"); return; }
+    fetch("/api/membership").then(r => r.json()).then(d => {
+      setMemberStatus(d.member ? "member" : "none");
+    }).catch(() => setMemberStatus("none"));
+  }, [user]);
 
   const WALLET_ADDRESS = "0xdf8fDc664D5986e024510eAfD6409Bf22CfB30a0";
 
