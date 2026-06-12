@@ -62,10 +62,10 @@ const news = [
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen bg-[#050710] text-white">
+    <main className="relative min-h-screen overflow-x-hidden bg-[#050710] text-white">
       <div className="grid-bg pointer-events-none absolute inset-0 opacity-75" />
-      <div className="pointer-events-none absolute left-1/2 top-[-180px] h-[440px] w-[440px] -translate-x-1/2 rounded-full bg-violet-600/25 blur-3xl" />
-      <div className="pointer-events-none absolute right-[-120px] top-[420px] h-[340px] w-[340px] rounded-full bg-cyan-500/16 blur-3xl" />
+      <div className="pointer-events-none absolute left-1/2 top-[-180px] h-[220px] w-[220px] -translate-x-1/2 rounded-full bg-violet-600/25 blur-3xl sm:h-[440px] sm:w-[440px]" />
+      <div className="pointer-events-none absolute right-[-60px] top-[420px] h-[180px] w-[180px] rounded-full bg-cyan-500/16 blur-3xl sm:right-[-120px] sm:h-[340px] sm:w-[340px]" />
 
       <header className="sticky top-0 z-50 border-b border-white/10 bg-[#050710]/72 backdrop-blur-xl">
         <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -108,7 +108,7 @@ export default function Home() {
         </nav>
       </header>
 
-      <section id="home" className="relative mx-auto max-w-7xl px-4 pb-12 pt-8 sm:px-6 sm:pb-28 sm:pt-20 lg:px-8">
+      <section id="home" className="relative mx-auto max-w-7xl px-4 pb-8 pt-6 sm:px-6 sm:pb-28 sm:pt-20 lg:px-8">
         <div className="grid items-center gap-6 lg:gap-10 lg:grid-cols-[1.02fr_0.98fr]">
           <div>
             <Image src="/logo.png" alt="web3爪子" width={160} height={54} className="mb-3 sm:mb-5" priority />
@@ -116,7 +116,7 @@ export default function Home() {
               <Sparkles className="h-4 w-4 text-cyan-300" />
               盯行情、抓新闻、发提醒，你的 web3 爪子已上线
             </div>
-            <h1 className="text-balance max-w-4xl text-3xl font-semibold leading-tight tracking-normal sm:text-5xl lg:text-6xl">
+            <h1 className="text-balance max-w-4xl text-[1.75rem] font-semibold leading-tight tracking-normal sm:text-5xl lg:text-6xl">
               你的个人
               <span className="block bg-gradient-to-r from-cyan-200 via-white to-violet-300 bg-clip-text text-transparent">
                 Web3 爪子
@@ -125,7 +125,7 @@ export default function Home() {
             <p className="text-balance mt-5 max-w-2xl text-sm leading-7 text-white/68 sm:text-lg">
               实时监控币安行情、抓取 Web3 新闻、深度分析主流币，像贴身助手一样帮你自动化操作
             </p>
-            <div className="mt-7 flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row">
+            <div className="mt-6 flex w-full max-w-full flex-col items-stretch gap-3 sm:mt-7 sm:w-auto sm:flex-row">
               <Button size="lg">
                 <Zap className="mr-2 h-5 w-5" />
                 立即启动
@@ -137,15 +137,15 @@ export default function Home() {
                 </a>
               </Button>
             </div>
-            <div className="mt-4 flex flex-wrap gap-x-4 gap-y-1.5 text-xs text-white/48 sm:text-sm">
+            <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1.5 text-xs text-white/48 sm:mt-4 sm:text-sm">
               <span>Binance 行情示例</span>
               <span>CoinGecko API 可替换</span>
               <span>Telegram 群提醒</span>
             </div>
           </div>
 
-          <div className="relative animate-float">
-            <div className="absolute inset-x-6 -bottom-8 h-24 rounded-full bg-violet-500/24 blur-3xl" />
+          <div className="relative animate-float will-change-transform">
+            <div className="absolute inset-x-6 -bottom-8 h-20 rounded-full bg-violet-500/20 blur-3xl sm:h-24 sm:bg-violet-500/24" />
             <div className="relative overflow-hidden rounded-lg border border-violet-400/20 bg-[#090d1c]/94 shadow-panel shadow-violet-500/10">
               <div className="flex h-12 items-center justify-between border-b border-white/10 bg-white/[0.035] px-4">
                 <div className="flex items-center gap-2">
@@ -204,7 +204,7 @@ export default function Home() {
               不只会聊天，还会主动看盘、追新闻、发提醒，把重复任务跑完
             </p>
           </div>
-          <div className="mt-8 grid gap-3 sm:mt-10 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-6 grid gap-3 sm:mt-10 sm:grid-cols-2 lg:grid-cols-4">
             {features.map((feature) => {
               const Icon = feature.icon;
               return (
@@ -224,7 +224,7 @@ export default function Home() {
       </section>
 
       <section id="新闻" className="relative py-20">
-      <div className="pointer-events-none absolute right-[-80px] top-[-80px] h-[200px] w-[200px] rounded-full bg-violet-500/10 blur-3xl" />
+      <div className="pointer-events-none absolute right-[-40px] top-[-40px] h-[100px] w-[100px] rounded-full bg-violet-500/10 blur-3xl sm:right-[-80px] sm:top-[-80px] sm:h-[200px] sm:w-[200px]" />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
             <div>
@@ -277,7 +277,7 @@ export default function Home() {
               <p className="font-medium">BTC / ETH 趋势 mock</p>
               <ShieldAlert className="h-4 w-4 text-amber-300" />
             </div>
-            <div className="grid h-72 items-end gap-2 rounded-md bg-black/20 p-4 sm:grid-cols-12">
+            <div className="grid h-44 items-end gap-2 rounded-md bg-black/20 p-4 sm:h-72 sm:grid-cols-12">
               {[42, 48, 45, 52, 58, 55, 64, 61, 68, 74, 70, 78].map((height, index) => (
                 <div key={index} className="flex h-full items-end">
                   <div
