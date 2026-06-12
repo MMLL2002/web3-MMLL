@@ -30,7 +30,7 @@ export function PricingSection() {
   };
 
   return (
-    <section id="定价" className="relative py-14 sm:py-20">
+    <section id="定价" className="relative py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-10 max-w-2xl">
           <p className="text-sm font-medium text-violet-200">定价</p>
@@ -44,9 +44,9 @@ export function PricingSection() {
           </p>
         </div>
 
-        <div className="mx-auto w-full max-w-lg">
-          <Card className="border-violet-300/30 bg-violet-500/[0.08] shadow-glow transition-all duration-300 hover:-translate-y-1 hover:shadow-glow">
-            <CardContent className="p-4 sm:p-6">
+        <div className="mx-auto max-w-lg">
+          <Card className="border-violet-300/30 bg-violet-500/[0.08] shadow-glow">
+            <CardContent className="p-6">
               <div className="flex flex-col items-center gap-6">
 
                 {/* Network Badge */}
@@ -103,7 +103,7 @@ export function PricingSection() {
                 <Button
                   asChild
                   size="lg"
-                  className="w-full gap-2 bg-gradient-to-r from-violet-500 to-cyan-500 text-sm sm:text-base shadow-lg hover:from-violet-400 hover:to-cyan-400"
+                  className="w-full gap-2 bg-gradient-to-r from-violet-500 to-cyan-500 text-base shadow-lg hover:from-violet-400 hover:to-cyan-400"
                 >
                   <a href="https://t.me/+-hTIvB6moWo4YWY1" target="_blank" rel="noreferrer">
                     我已支付 →

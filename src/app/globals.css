@@ -30,7 +30,6 @@ html {
 }
 
 body {
-  overflow-x: hidden;
   min-height: 100vh;
   background: #050710;
   color: hsl(var(--foreground));
