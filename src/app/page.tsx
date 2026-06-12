@@ -67,7 +67,7 @@ export default function Home() {
       <div className="pointer-events-none absolute left-1/2 top-[-180px] h-[220px] w-[220px] -translate-x-1/2 rounded-full bg-violet-600/25 blur-3xl sm:h-[440px] sm:w-[440px]" />
       <div className="pointer-events-none absolute right-[-60px] top-[420px] h-[180px] w-[180px] rounded-full bg-cyan-500/16 blur-3xl sm:right-[-120px] sm:h-[340px] sm:w-[340px]" />
 
-      <header className="sticky top-0 z-50 border-b border-white/10 bg-[#050710]/72 backdrop-blur-xl">
+      <header className="border-b border-white/10">
         <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <a href="#home" className="flex items-center gap-3">

@@ -70,6 +70,22 @@ body {
   animation: shimmer 4.5s linear infinite;
 }
 
+/* ===== 导航栏安全兜底 ===== */
+nav, header {
+  background-color: #0a0a0a;
+  padding: 1rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  min-height: 60px;
+}
+
+@media (max-width: 768px) {
+  nav {
+    padding: 0.8rem 1rem;
+  }
+}
+
 /* ------ Blur element GPU fix: prevent black blocks on ALL browsers ------ */
 [class*="blur-"] {
   -webkit-backface-visibility: hidden;
