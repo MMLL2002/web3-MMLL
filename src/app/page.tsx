@@ -26,8 +26,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-const navItems = ["首页", "功能", "新闻", "分析", "定价", "控制台"];
-
 const features = [
   {
     icon: BarChart3,
@@ -67,46 +65,7 @@ export default function Home() {
       <div className="pointer-events-none absolute left-1/2 top-[-180px] h-[440px] w-[440px] -translate-x-1/2 rounded-full bg-violet-600/25 blur-3xl" />
       <div className="pointer-events-none absolute right-[-120px] top-[420px] h-[340px] w-[340px] rounded-full bg-cyan-500/16 blur-3xl" />
 
-      <header className="sticky top-0 z-50 border-b border-white/10 bg-[#050710]/72 backdrop-blur-xl">
-        <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex h-16 items-center justify-between">
-            <a href="#home" className="flex items-center gap-3">
-              <Image src="/logo.svg" alt="web3爪子" width={120} height={40} className="h-9 w-auto" priority />
-            </a>
-            <div className="hidden items-center gap-7 lg:flex">
-              {navItems.map((item) => (
-                <a
-                  key={item}
-                  href={`#${item === "首页" ? "home" : item}`}
-                  className="text-sm text-white/66 transition hover:text-white"
-                >
-                  {item}
-                </a>
-              ))}
-            </div>
-            <div className="flex items-center gap-2">
-              <LoginModal />
-              <Button asChild size="sm" className="hidden sm:inline-flex">
-                <a href="#控制台">
-                  <Zap className="mr-2 h-4 w-4" />
-                  启动
-                </a>
-              </Button>
-            </div>
-          </div>
-          <div className="-mx-4 flex gap-1 overflow-x-auto border-t border-white/8 px-4 pb-3 pt-1 lg:hidden">
-            {navItems.map((item) => (
-              <a
-                key={item}
-                href={`#${item === "首页" ? "home" : item}`}
-                className="shrink-0 rounded-md px-3 py-2 text-sm text-white/66 transition hover:bg-white/[0.06] hover:text-white"
-              >
-                {item}
-              </a>
-            ))}
-          </div>
-        </nav>
-      </header>
+      
 
       <section id="home" className="relative mx-auto max-w-7xl px-4 pb-20 pt-14 sm:px-6 sm:pb-28 sm:pt-20 lg:px-8">
         <div className="grid items-center gap-10 lg:grid-cols-[1.02fr_0.98fr]">
