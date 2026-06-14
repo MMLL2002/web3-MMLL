@@ -1,4 +1,4 @@
-﻿"use client";
+﻿﻿"use client";
 
 import { useState, useEffect } from "react";
 import { Check, Copy, Loader2, MessageCircle, ExternalLink } from "lucide-react";
@@ -50,7 +50,7 @@ export function PricingSection() {
         setActive(true);
         setMsg("激活成功！"); setMsgType("ok");
       } else { setMsg(d.error || "失败"); setMsgType("err"); }
-    } catch { setMsg("网络错误"); setMsgType("err"); }
+    } catch { setMsg("请求失败"); setMsgType("err"); }
     setBusy(false);
   };
 
