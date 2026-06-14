@@ -17,7 +17,6 @@ import Image from "next/image";
 
 import { LoginModal } from "@/components/login-modal";
 import { MarketTicker } from "@/components/market-ticker";
-import { NewsSection } from "@/components/news-section";
 import { PricingSection } from "@/components/pricing-section";
 import { Button } from "@/components/ui/button";
 import {
@@ -50,6 +49,15 @@ const features = [
     title: "自动化任务执行",
     text: "Telegram/WhatsApp 监控、RWA 警报、策略循环执行，让代理 7x24 跑起来",
   },
+];
+
+const news = [
+  "AI Agents + RWA 融合爆发，2026 Davos 重点议题",
+  "机构加速 tokenized 资产，RWA 市场 cap 超 220 亿美元",
+  "ETH 稳定币与 RWA 成 DeFi 新支柱，2026 或迎超级周期",
+  "香港 Web3 政策持续利好，跨境区块链项目推进",
+  "主流交易所加码 AI Agent 赛道，自动化研究工具升温",
+  "稳定币结算场景扩展，链上支付继续靠近真实业务",
 ];
 
 export default function Home() {
@@ -214,7 +222,38 @@ export default function Home() {
         </div>
       </section>
 
-      <NewsSection />
+      <section id="新闻" className="relative py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+            <div>
+              <p className="text-sm font-medium text-violet-200">Web3 情报</p>
+              <h2 className="mt-3 text-3xl font-semibold tracking-normal sm:text-4xl">
+                最新 Web3 动态
+              </h2>
+            </div>
+            <Button variant="outline">
+              刷新情报
+              <ChevronRight className="ml-2 h-4 w-4" />
+            </Button>
+          </div>
+          <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            {news.map((item, index) => (
+              <Card key={item} className="overflow-hidden">
+                <CardHeader>
+                  <div className="mb-4 flex items-center justify-between text-xs text-white/42">
+                    <span>情报速递</span>
+                    <span>{index + 1} 小时前</span>
+                  </div>
+                  <CardTitle className="leading-7">{item}</CardTitle>
+                  <CardDescription className="leading-6">
+                    AI 已提取重点、风险点和可能影响的板块，后续可以接入真实新闻源。
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section id="分析" className="relative border-y border-white/10 bg-white/[0.025] py-20">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[0.85fr_1.15fr] lg:px-8">

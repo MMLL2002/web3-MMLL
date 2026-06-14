@@ -1,58 +1,62 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useState } from "react";
 
-type CoinGeckoData = Record<string, { usd?: number; usd_24h_change?: number }>;
-
-const COIN_META: Record<string, { name: string; pair: string }> = {
-  bitcoin: { name: "BTC", pair: "BTC/USDT" },
-  ethereum: { name: "ETH", pair: "ETH/USDT" },
-  solana: { name: "SOL", pair: "SOL/USDT" },
-  binancecoin: { name: "BNB", pair: "BNB/USDT" },
+type CoinGeckoPrice = {
+  bitcoin?: {
+    usd?: number;
+    usd_24h_change?: number;
+  };
 };
 
 export function MarketTicker() {
-  const [prices, setPrices] = useState<Record<string, { usd: number; chg: number }>>({});
+  const [price, setPrice] = useState(62000);
+  const [change, setChange] = useState(0.68);
   const [source, setSource] = useState("mock");
 
   useEffect(() => {
-    fetch("/api/coins")
-      .then((r) => r.json())
-      .then((d: CoinGeckoData) => {
-        const map: Record<string, { usd: number; chg: number }> = {};
-        for (const [id, v] of Object.entries(d)) {
-          if (v?.usd) map[id] = { usd: v.usd, chg: v.usd_24h_change ?? 0 };
-        }
-        if (Object.keys(map).length > 0) {
-          setPrices(map);
+    async function loadPrice() {
+      try {
+        const response = await fetch(
+          "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true",
+          { next: { revalidate: 30 } },
+        );
+        if (!response.ok) return;
+        const data = (await response.json()) as CoinGeckoPrice;
+        if (data.bitcoin?.usd) {
+          setPrice(data.bitcoin.usd);
+          setChange(data.bitcoin.usd_24h_change ?? 0.68);
           setSource("CoinGecko");
         }
-      })
-      .catch(() => {});
+      } catch {
+        setSource("mock");
+      }
+    }
+
+    loadPrice();
   }, []);
 
   return (
-    <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-      {["bitcoin", "ethereum", "solana", "binancecoin"].map((id) => {
-        const meta = COIN_META[id];
-        const p = prices[id];
-        return (
-          <div key={id} className="rounded-md border border-white/10 bg-white/[0.04] px-3 py-2">
-            <p className="text-xs text-white/45">{meta.pair}</p>
-            <p className="mt-0.5 text-sm font-semibold text-white">
-              ${p ? p.usd.toLocaleString() : "---"}
-            </p>
-            {p && (
-              <span className={`inline-flex items-center gap-0.5 text-xs font-medium ${
-                p.chg >= 0 ? "text-emerald-400" : "text-rose-400"
-              }`}>
-                {p.chg >= 0 ? "+" : ""}
-                {p.chg.toFixed(2)}%
-              </span>
-            )}
-          </div>
-        );
-      })}
+    <div className="rounded-lg border border-cyan-300/18 bg-cyan-300/[0.06] p-4">
+      <div className="mb-3 flex items-center justify-between">
+        <p className="text-sm text-white/52">当前行情 · {source}</p>
+        <span className="rounded-md bg-emerald-400/12 px-2 py-1 text-xs text-emerald-200">
+          {change >= 0 ? "+" : ""}
+          {change.toFixed(2)}%
+        </span>
+      </div>
+      <div className="flex flex-wrap items-end justify-between gap-3">
+        <div>
+          <p className="text-lg font-semibold">BTC/USDT</p>
+          <p className="mt-1 text-3xl font-semibold">
+            ≈ {Math.round(price).toLocaleString()} USDT
+          </p>
+        </div>
+        <div className="text-right text-sm leading-6 text-white/55">
+          <p>24H 高 62,445</p>
+          <p>24H 低 60,691</p>
+        </div>
+      </div>
     </div>
   );
 }
