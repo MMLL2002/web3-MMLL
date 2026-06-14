@@ -49,8 +49,8 @@ export function PricingSection() {
         localStorage.setItem(STORAGE_KEY, "activated");
         setActive(true);
         setMsg("激活成功！"); setMsgType("ok");
-      } else { setMsg(d.error || "失败"); setMsgType("err"); }
-    } catch { setMsg("请求失败"); setMsgType("err"); }
+      } else { /* silent */ }
+    } catch { /* silent */ }
     setBusy(false);
   };
 
